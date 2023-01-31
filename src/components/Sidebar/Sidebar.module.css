@@ -1,0 +1,5 @@
+.sidebar {
+  flex: 3;
+  height: calc(100vh - 3.125rem);
+  background-color: pink;
+}
