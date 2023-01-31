@@ -1,5 +1,6 @@
 import styles from "./Topbar.module.css";
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { BsSearch, BsFillPersonFill, BsChatLeftFill } from "react-icons/bs";
+import { IoIosNotifications } from "react-icons/io";
 
 export default function Topbar() {
   return (
@@ -9,7 +10,7 @@ export default function Topbar() {
       </div>
       <div className={styles.topbarCenter}>
         <div className={styles.searchBar}>
-          <Search className={styles.searchIcon} />
+          <BsSearch className={styles.searchIcon} />
           <input
             placeholder="Search for a friend, post or video"
             className={styles.searchInput}
@@ -23,15 +24,15 @@ export default function Topbar() {
         </div>
         <div className={styles.topbarIcons}>
           <div className={styles.topbarIconItem}>
-            <Person />
+            <BsFillPersonFill />
             <span className={styles.topbarIconBadge}>1</span>
           </div>
           <div className={styles.topbarIconItem}>
-            <Chat />
+            <BsChatLeftFill />
             <span className={styles.topbarIconBadge}>2</span>
           </div>
           <div className={styles.topbarIconItem}>
-            <Notifications />
+            <IoIosNotifications />
             <span className={styles.topbarIconBadge}>3</span>
           </div>
         </div>
