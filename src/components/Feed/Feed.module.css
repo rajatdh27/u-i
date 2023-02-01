@@ -1,4 +1,5 @@
 .feed {
   flex: 5.5;
+  height: calc(100vh - 3.125rem);
   background-color: white;
 }
