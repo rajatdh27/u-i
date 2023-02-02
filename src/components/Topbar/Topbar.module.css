@@ -66,9 +66,9 @@
 }
 
 .topbarIconBadge {
-  width: 0.9375rem;
-  height: 0.9375rem;
-  font-size: 0.75rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  font-size: 0.5rem;
   background-color: red;
   border-radius: 50%;
   position: absolute;
