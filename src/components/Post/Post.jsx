@@ -1,8 +1,15 @@
+import { useState } from "react";
 import styles from "./Post.module.css";
 import { AiOutlineMore } from "react-icons/ai";
 import { Users } from "../../dummyData";
 
 export default function Post({ post }) {
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLike] = useState(false);
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLike(!isLiked);
+  };
   return (
     <div className={styles.post}>
       <div className={styles.postWrapper}>
@@ -28,10 +35,20 @@ export default function Post({ post }) {
         </div>
         <div className={styles.postBottom}>
           <div className={styles.postBottomLeft}>
-            <img className={styles.likeIcon} src="assets/like.png" alt="" />
-            <img className={styles.likeIcon} src="assets/heart.png" alt="" />
+            <img
+              className={styles.likeIcon}
+              src="assets/like.png"
+              alt=""
+              onClick={likeHandler}
+            />
+            <img
+              className={styles.likeIcon}
+              src="assets/heart.png"
+              alt=""
+              onClick={likeHandler}
+            />
             <span className={styles.postLikeCounter}>
-              {post.like} people like it!
+              {like} people like it!
             </span>
           </div>
           <div className={styles.postBottomRight}>
