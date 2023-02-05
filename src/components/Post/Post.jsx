@@ -1,7 +1,8 @@
 import styles from "./Post.module.css";
 import { AiOutlineMore } from "react-icons/ai";
+import { Users } from "../../dummyData";
 
-export default function Post() {
+export default function Post({ post }) {
   return (
     <div className={styles.post}>
       <div className={styles.postWrapper}>
@@ -9,28 +10,34 @@ export default function Post() {
           <div className={styles.postTopLeft}>
             <img
               className={styles.postProfileImage}
-              src="/assets/person/1.jpeg"
+              src={Users.filter((u) => u.id === post.userId)[0].profilePicture}
               alt=""
             />
-            <span className={styles.postUsername}>Itachi</span>
-            <span className={styles.postDate}>5 min</span>
+            <span className={styles.postUsername}>
+              {Users.filter((u) => u.id === post.userId)[0].username}
+            </span>
+            <span className={styles.postDate}>{post.date}</span>
           </div>
           <div className={styles.postTopRight}>
             <AiOutlineMore />
           </div>
         </div>
         <div className={styles.postCenter}>
-          <span className={styles.postText}>Hey! It's my first post :)</span>
-          <img className={styles.postImage} src="assets/person/1.jpeg" alt="" />
+          <span className={styles.postText}>{post?.desc}</span>
+          <img className={styles.postImage} src={post.photo} alt="" />
         </div>
         <div className={styles.postBottom}>
           <div className={styles.postBottomLeft}>
             <img className={styles.likeIcon} src="assets/like.png" alt="" />
             <img className={styles.likeIcon} src="assets/heart.png" alt="" />
-            <span className={styles.postLikeCounter}>32 people like it!</span>
+            <span className={styles.postLikeCounter}>
+              {post.like} people like it!
+            </span>
           </div>
           <div className={styles.postBottomRight}>
-            <span className={styles.postCommentText}>9 comments</span>
+            <span className={styles.postCommentText}>
+              {post.comment} comments
+            </span>
           </div>
         </div>
       </div>

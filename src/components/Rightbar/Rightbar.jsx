@@ -1,4 +1,6 @@
 import styles from "./Rightbar.module.css";
+import { Users } from "../../dummyData";
+import Online from "../Online/Online";
 
 export default function Rightbar() {
   return (
@@ -13,72 +15,9 @@ export default function Rightbar() {
         <img className={styles.rightbarAd} src="/assets/ad.png" alt="" />
         <h4 className={styles.rightbarTitle}>Online Friends</h4>
         <ul className={styles.rightbarFriendList}>
-          <li className={styles.rightbarFriend}>
-            <div className={styles.rightbarProfileImgContainer}>
-              <img
-                className={styles.rightbarProfileImg}
-                src="/assets/person/3.jpeg"
-                alt=""
-              />
-              <span className={styles.rightbarOnline}></span>
-            </div>
-            <span className={styles.rightbarUserName}>Madara Uchiha</span>
-          </li>
-          <li className={styles.rightbarFriend}>
-            <div className={styles.rightbarProfileImgContainer}>
-              <img
-                className={styles.rightbarProfileImg}
-                src="/assets/person/3.jpeg"
-                alt=""
-              />
-              <span className={styles.rightbarOnline}></span>
-            </div>
-            <span className={styles.rightbarUserName}>Madara Uchiha</span>
-          </li>
-          <li className={styles.rightbarFriend}>
-            <div className={styles.rightbarProfileImgContainer}>
-              <img
-                className={styles.rightbarProfileImg}
-                src="/assets/person/3.jpeg"
-                alt=""
-              />
-              <span className={styles.rightbarOnline}></span>
-            </div>
-            <span className={styles.rightbarUserName}>Madara Uchiha</span>
-          </li>
-          <li className={styles.rightbarFriend}>
-            <div className={styles.rightbarProfileImgContainer}>
-              <img
-                className={styles.rightbarProfileImg}
-                src="/assets/person/3.jpeg"
-                alt=""
-              />
-              <span className={styles.rightbarOnline}></span>
-            </div>
-            <span className={styles.rightbarUserName}>Madara Uchiha</span>
-          </li>
-          <li className={styles.rightbarFriend}>
-            <div className={styles.rightbarProfileImgContainer}>
-              <img
-                className={styles.rightbarProfileImg}
-                src="/assets/person/3.jpeg"
-                alt=""
-              />
-              <span className={styles.rightbarOnline}></span>
-            </div>
-            <span className={styles.rightbarUserName}>Madara Uchiha</span>
-          </li>
-          <li className={styles.rightbarFriend}>
-            <div className={styles.rightbarProfileImgContainer}>
-              <img
-                className={styles.rightbarProfileImg}
-                src="/assets/person/3.jpeg"
-                alt=""
-              />
-              <span className={styles.rightbarOnline}></span>
-            </div>
-            <span className={styles.rightbarUserName}>Madara Uchiha</span>
-          </li>
+          {Users.map((u) => {
+            return <Online key={u.id} user={u} />;
+          })}
         </ul>
       </div>
     </div>

@@ -6,6 +6,8 @@ import { HiUserGroup } from "react-icons/hi";
 import { BsBookmarkFill } from "react-icons/bs";
 import { RiSuitcaseFill } from "react-icons/ri";
 import { GiGraduateCap } from "react-icons/gi";
+import { Users } from "../../dummyData";
+import Friends from "../Friends/Friends";
 
 export default function Sidebar() {
   return (
@@ -52,79 +54,9 @@ export default function Sidebar() {
         <button className={styles.sidebarButton}>Show More</button>
         <hr className={styles.sidebarHr}></hr>
         <ul className={styles.sidebarFriendList}>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/1.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>1</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/2.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>2</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/3.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>3</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/4.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>4</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/5.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>5</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/6.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>6</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/7.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>7</span>
-          </li>
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/8.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>8</span>
-          </li>
-
-          <li className={styles.sidebarFriend}>
-            <img
-              className={styles.sidebarFriendImage}
-              src="/assets/person/9.jpeg"
-              alt=""
-            />
-            <span className={styles.sidebarFriendName}>9</span>
-          </li>
+          {Users.map((u) => {
+            return <Friends key={u.id} user={u} />;
+          })}
         </ul>
       </div>
     </div>

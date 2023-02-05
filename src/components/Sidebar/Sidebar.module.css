@@ -1,7 +1,8 @@
 .sidebar {
   flex: 3;
   height: calc(100vh - 3.125rem);
-  background-color: pink;
+  position: sticky;
+  top: 3.125rem;
   overflow-y: scroll;
 }
 
@@ -53,17 +54,4 @@
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-.sidebarFriend {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.sidebarFriendImage {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 0.625rem;
 }
