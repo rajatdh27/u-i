@@ -1,12 +1,15 @@
 import styles from "./Topbar.module.css";
 import { BsSearch, BsFillPersonFill, BsChatLeftFill } from "react-icons/bs";
 import { IoIosNotifications } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function Topbar() {
   return (
     <div className={styles.topbarContainer}>
       <div className={styles.topbarLeft}>
-        <span className={styles.topbarLogo}>u&I</span>
+        <Link to="/" style={{ textDecoration: "none" ,color: "white"}}>
+          <span className={styles.topbarLogo}>u&I</span>
+        </Link>
       </div>
       <div className={styles.topbarCenter}>
         <div className={styles.searchBar}>
