@@ -18,9 +18,9 @@ export default function Feed() {
     <div className={styles.feed}>
       <div className={styles.feedWrapper}>
         <Share />
-        {/* {Posts.map((p) => {
-          return <Post post={p} key={p.id} />;
-        })} */}
+        {posts.map((p) => {
+          return <Post post={p} key={p._id} />;
+        })}
       </div>
     </div>
   );
