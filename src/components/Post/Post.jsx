@@ -4,6 +4,7 @@ import { AiOutlineMore } from "react-icons/ai";
 import axios from "axios";
 // import { Users } from "../../dummyData";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -16,7 +17,9 @@ export default function Post({ post }) {
   };
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`users/${post.userId}`);
+      const res = await axios.get(
+        `http://localhost:8800/api/users/${post.userId}`
+      );
       console.log(res);
       setUser(res.data);
     };
@@ -27,11 +30,13 @@ export default function Post({ post }) {
       <div className={styles.postWrapper}>
         <div className={styles.postTop}>
           <div className={styles.postTopLeft}>
-            <img
-              className={styles.postProfileImage}
-              src={user.profilepicture || PF + "person/noavatar.jpg"}
-              alt=""
-            />
+            <Link to={`profile/${user.username}`}>
+              <img
+                className={styles.postProfileImage}
+                src={user.profilepicture || PF + "person/noavatar.jpg"}
+                alt=""
+              />
+            </Link>
             <span className={styles.postUsername}>{user.username}</span>
             <span className={styles.postDate}>{format(post.createdAt)}</span>
           </div>
@@ -47,13 +52,13 @@ export default function Post({ post }) {
           <div className={styles.postBottomLeft}>
             <img
               className={styles.likeIcon}
-              src="assets/like.png"
+              src="/assets/like.png"
               alt=""
               onClick={likeHandler}
             />
             <img
               className={styles.likeIcon}
-              src="assets/heart.png"
+              src="/assets/heart.png"
               alt=""
               onClick={likeHandler}
             />
