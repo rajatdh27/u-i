@@ -17,9 +17,7 @@ export default function Post({ post }) {
   };
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(
-        `http://localhost:8800/api/users/${post.userId}`
-      );
+      const res = await axios.get(`users/${post.userId}`);
       console.log(res);
       setUser(res.data);
     };
