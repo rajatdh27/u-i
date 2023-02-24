@@ -11,11 +11,12 @@ export default function Profile() {
   const [user, setUser] = useState({});
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users/username=madara`);
+      const res = await axios.get(`/users?username=madara`);
       setUser(res.data);
     };
+    fetchUser();
   }, []);
-  console.log(user);
+  console.log(user, user.username);
   return (
     <>
       <Topbar />
