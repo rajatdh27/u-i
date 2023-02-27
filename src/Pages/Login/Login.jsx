@@ -1,6 +1,13 @@
 import styles from "./Login.module.css";
+import { useRef } from "react";
 
 export default function Login() {
+  const email = useRef();
+  const password = useRef();
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log(email.current.value);
+  };
   return (
     <div className={styles.login}>
       <div className={styles.loginWrapper}>
@@ -11,23 +18,28 @@ export default function Login() {
           </span>
         </div>
         <div className={styles.loginRight}>
-          <div className={styles.loginBox}>
+          <form className={styles.loginBox} onSubmit={handleClick}>
             <input
               placeholder="Email"
+              required
               type="email"
               className={styles.loginInput}
+              ref={email}
             />
             <input
               placeholder="Password"
+              required
               type="password"
+              minLength="6"
               className={styles.loginInput}
+              ref={password}
             />
             <button className={styles.loginButton}>Login</button>
             <span className={styles.loginForgot}>Forgot Password?</span>
-            <button className={styles.loginRegisterButton}>
+            <button className={styles.loginRegisterButton} type="submit">
               Create a new account
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
