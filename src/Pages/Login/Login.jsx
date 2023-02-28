@@ -1,13 +1,21 @@
 import styles from "./Login.module.css";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { loginCall } from "../../apiCalls";
+import { SpinningCircles } from "react-loading-icons";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(email.current.value);
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
   };
+  console.log(user);
   return (
     <div className={styles.login}>
       <div className={styles.loginWrapper}>
@@ -34,10 +42,24 @@ export default function Login() {
               className={styles.loginInput}
               ref={password}
             />
-            <button className={styles.loginButton}>Login</button>
+            <button className={styles.loginButton} disabled={isFetching}>
+              {isFetching ? (
+                <SpinningCircles stroke="#000" style={{ height: "2rem" }} />
+              ) : (
+                "Login"
+              )}
+            </button>
             <span className={styles.loginForgot}>Forgot Password?</span>
-            <button className={styles.loginRegisterButton} type="submit">
-              Create a new account
+            <button
+              className={styles.loginRegisterButton}
+              type="submit"
+              disabled={isFetching}
+            >
+              {isFetching ? (
+                <SpinningCircles stroke="#000" style={{ height: "2rem" }} />
+              ) : (
+                "Create a new account"
+              )}
             </button>
           </form>
         </div>
