@@ -1,6 +1,18 @@
+import { useRef } from "react";
 import styles from "./Register.module.css";
 
 export default function Register() {
+  const username = useRef();
+  const password = useRef();
+  const email = useRef();
+  const confirmPassword = useRef();
+  const handClick = (e) => {
+    e.preventDefault();
+    if (password.current.value !== confirmPassword.current.value) {
+      password.current.setCustomValidity("Passwords don't match");
+    }
+  };
+
   return (
     <div className={styles.login}>
       <div className={styles.loginWrapper}>
@@ -11,33 +23,44 @@ export default function Register() {
           </span>
         </div>
         <div className={styles.loginRight}>
-          <div className={styles.loginBox}>
+          <form className={styles.loginBox} onSubmit={handClick}>
             <input
+              required
               placeholder="User Name"
               type="text"
               className={styles.loginInput}
+              ref={username}
             />
             <input
+              required
               placeholder="Email"
               type="email"
               className={styles.loginInput}
+              ref={email}
             />
             <input
+              required
               placeholder="Password"
               type="password"
               className={styles.loginInput}
+              minLength="6"
+              ref={password}
             />
             <input
+              required
               placeholder="Confirm Password"
               type="password"
               className={styles.loginInput}
+              ref={confirmPassword}
             />
-            <button className={styles.loginButton}>Sign Up</button>
+            <button className={styles.loginButton} type="submit">
+              Sign Up
+            </button>
             <span className={styles.loginForgot}>Forgot Password?</span>
             <button className={styles.loginRegisterButton}>
               Login into your account
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
