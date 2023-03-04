@@ -1,13 +1,18 @@
 import styles from "./Topbar.module.css";
+import { useContext } from "react";
 import { BsSearch, BsFillPersonFill, BsChatLeftFill } from "react-icons/bs";
 import { IoIosNotifications } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Topbar() {
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  console.log(user.profilePicture);
   return (
     <div className={styles.topbarContainer}>
       <div className={styles.topbarLeft}>
-        <Link to="/" style={{ textDecoration: "none" ,color: "white"}}>
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           <span className={styles.topbarLogo}>u&I</span>
         </Link>
       </div>
@@ -40,7 +45,11 @@ export default function Topbar() {
           </div>
         </div>
         <img
-          src="/assets/person/8.jpeg"
+          src={
+            user && user.profilePicture !== null && user.profilePicture !== ""
+              ? PF + user.profilePicture
+              : PF + "person/noavatar.jpg"
+          }
           alt=""
           className={styles.topbarImage}
         ></img>
