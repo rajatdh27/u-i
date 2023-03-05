@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact element={user ? <Home /> : <Register />} />
+        <Route path="/" exact element={user ? <Home /> : <Login />} />
         <Route
           path="/login"
           exact
@@ -25,7 +25,7 @@ function App() {
         <Route
           path="/profile/:username"
           exact
-          element={user ? <Profile /> : <Register />}
+          element={user ? <Profile /> : <Login />}
         />
         <Route
           path="/register"
